@@ -1,0 +1,34 @@
+% Star indicate that these are short commands (not containing whole paragraphs)
+\newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
+\newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
+\newcommand*{\sectionn}[2]{\section[#1]{#1\\{\large #2}}}
+\newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
+
+\newenvironment{deflist}
+    {\vspace{1em}\tabularx{\textwidth}{l X}}
+    {\endtabularx}
+\newcommand*{\notation}[2]{$#1$ & #2 \\[1em]}
+\newcommand*{\abbr}[3]{\textbf{#1} & \emph{#2}. #3 \\[1em]}
+\newcommand*{\gloss}[2]{\textbf{#1} & #2 \\[1em]}
+
+% Default arguments, from the guide: http://tex.loria.fr/ctan-doc/macros/latex/doc/html/usrguide/node18.html
+\newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{#2}}
+
+\newcommand*{\reals}{\mathbb{R}}
+\newcommand*{\trans}{^T}  % More straight: ^{\mkern-1.5mu\mathsf{T}}
+\newcommand*{\tdots}{\,..\,}  % two dots
+\newcommand*{\tcdots}{\,\cdot\cdot\,}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\Var}{Var}
+\DeclareMathOperator*{\Cov}{Cov}
+\DeclareMathOperator*{\st}{subject\ to\ }
+
+\newcommand*{\mat}[1]{\vb{#1}}
+\newcommand*{\diag}[1]{\operatorname{diag}\qty(#1)}
+\newcommand*{\qed}{\hfill\ensuremath{\square}}
+\newcommand*{\eps}{\varepsilon}
+\newcommand*{\had}{\mathrel{\mathsmaller{\mathsmaller{\odot}}}}
+% Pointwise multiplication (Hadamard product).
+% From https://latex.org/forum/viewtopic.php?t=27766

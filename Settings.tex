@@ -1,0 +1,166 @@
+\documentclass[
+    a4paper,
+    oneside,
+    11pt,
+]{memoir}
+
+% Use 8 bits per glyph in the output, instead of 7.
+% Advantages: https://tex.stackexchange.com/a/677
+\usepackage[T1]{fontenc}
+
+% Allow UTF-8 characters in this .tex file
+\usepackage[utf8]{inputenc}
+
+\usepackage{pdfpages}
+% To be able to include modern pdf's
+\pdfminorversion=8
+
+\headstyles{komalike}
+\chapterstyle{bianchi}
+
+% cft = Memoir mnemonic for (table of) Contents, (list of) Figures, 
+% and (list of) tables
+\renewcommand{\cftchapterfont}{\bfseries\sffamily}
+\renewcommand{\cftsectionfont}{\normalfont\sffamily}
+
+% `\includegraphics` and its options
+\usepackage{graphicx}
+
+% For multiple subfigures within one `figure`.
+\usepackage{subcaption}
+
+% On figure placement:
+%  - https://tex.stackexchange.com/a/39020
+%  - https://robjhyndman.com/hyndsight/latex-floats/
+% 
+% The default placement specifier is (probably) [tbp],
+% for top, bottom, own page.
+
+% Palatino (a nice serif font) for serif text & for math.
+% \usepackage[sc]{mathpazo}
+%
+% Serif text: Palatino
+% Sans-serif text: Computer Modern sans-serif
+% Math text: Default (Computer Modern)
+\usepackage{palatino}
+\renewcommand{\sfdefault}{cmss}
+
+% Make typography easier on the eye.
+% (Characters may expand into the margins so that the margins are psycho-visually straight; Font width may vary line by line, so that the interword spacing becomes more even).
+\usepackage{microtype}
+% For this to work with mathpazo, you have to manually install cm-super, and run updmap.
+
+\usepackage{caption}
+\captionsetup{margin=15pt}
+\captionsetup{font={sf}}
+\captionsetup[subfloat]{labelfont={bf}, labelformat=simple, labelsep=period}
+
+\DeclareCaptionLabelFormat{bold}{\textbf{#2.}}
+\captionsetup{subrefformat=bold}
+% \captionsetup[subrefformat]{labelfont={bf}, labelformat=simple, labelsep=period}
+
+\setfloatadjustment{figure}{\sffamily\centerfloat}
+\setfloatadjustment{table}{\sffamily\centering}
+
+% Nicer table lines
+\usepackage{booktabs}
+
+% For \mathrel{\mathsmaller{.}} e.g.
+\usepackage{relsize}
+
+% For equations: alignment, numbering, `\text{}`, ...
+\usepackage{amsmath}
+
+% For ℝ e.g.
+\usepackage{amssymb}
+
+% \num{1e-10} becomes nice exponential notation.
+% Also: \SI{1e-10}{\meter\per\second}
+\usepackage{siunitx}
+\sisetup{inter-unit-product = \ensuremath{{} \cdot {}}}
+\sisetup{per-mode = symbol}
+
+% Nice derivatives
+\usepackage{physics}
+
+% Ions
+\usepackage[version=4]{mhchem}
+
+%
+\usepackage{geometry}
+\geometry{
+    top=35mm,
+    bottom=35mm,
+}
+% \usepackage{showframe}
+
+% Paragraph spacing
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1.2em}
+
+% https://tex.stackexchange.com/a/26522
+\setlength{\textfloatsep}{22.0pt plus 2.0pt minus 4.0pt}
+\setlength{\floatsep}{16.0pt plus 2.0pt minus 2.0pt}
+
+% Applies to formulas
+% (`short' means after a short paragraph).
+% \AtBeginDocument{
+%     \setlength{\abovedisplayskip}{-0.5em}
+%     \setlength{\abovedisplayshortskip}{-0.5em}
+%     \setlength{\belowdisplayskip}{0.6em}
+%     \setlength{\belowdisplayshortskip}{0.6em}
+% }
+
+% Subsection spacing
+\setbeforesecskip{5.0ex plus 1ex minus .2ex}
+\setbeforesubsecskip{4.5ex plus 1ex minus .2ex}
+
+
+% `biblatex' is fresher than `natbib'. "biber" is the program, biblatex is
+% the package.
+\usepackage[
+    backend=biber,
+    citestyle=ieee,
+    sorting=none,
+    maxbibnames=20,
+]{biblatex}
+% '.bib' extension is necessary.
+\addbibresource{references.bib}
+\newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
+
+
+% `\vref` cleverly adds the page number to a reference.
+\usepackage{varioref}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+\definecolor{PleasantBlue}{RGB}{13, 127, 172}
+
+\hypersetup{
+    colorlinks = true,
+    linkcolor = PleasantBlue,
+    citecolor = PleasantBlue,
+    urlcolor = PleasantBlue,
+}
+
+
+% A separate TOC for the appendices.
+% Adapted from "sniplet C.8" of the Memoir manual.
+%
+\cftinsertcode{BREAK}{\changetocdepth{-10}}
+\let\normalchangetocdepth\changetocdepth
+%
+\makeatletter
+\newcommand\appendixtableofcontents{
+    \begingroup
+    \let\changetocdepth\@gobble
+    \normalchangetocdepth{-10}
+    \cftinsertcode{BREAK}{\normalchangetocdepth{3}}
+    \renewcommand\contentsname{Appendices}
+    \tableofcontents*
+    \endgroup
+}
+\makeatother
+%
+% Making sure we get all PDF bookmarks after this second TOC weirdness:
+\hypersetup{bookmarksdepth=4}
