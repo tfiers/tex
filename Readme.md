@@ -1,5 +1,5 @@
 # ToTeX
 
-(Named after _Lamport's TeX_).
+(Named after _Lamport's TeX_, or LaTeX).
 
-Some LaTeX preamble material common to multiple documents.
+Some preamble material common to multiple of my LaTeX documents.
