@@ -1,4 +1,8 @@
 % We're assuming memoir here.
+%
+% If you want to write an article instead of someting larger with chapters,
+% use the `article' option for documentclass, and specify
+% `chapterstyle{komalike}'
 
 % Use 8 bits per glyph in the output, instead of 7.
 % Advantages: https://tex.stackexchange.com/a/677
@@ -58,8 +62,21 @@
 \setfloatadjustment{figure}{\sffamily\centerfloat}
 \setfloatadjustment{table}{\sffamily\centering}
 
-% Nicer table lines
+% Nicer table lines. Use \toprule, \midrule, \bottomrule
 \usepackage{booktabs}
+
+% To additionally remove left and right space:
+% \begin{tabular}{@{}lll@{}}
+
+% Some more space between rows
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\ra{1.2}
+
+% Use as \multirow{nrows}{*}{Cell contents}
+\usepackage{multirow}
+
+% A command \makecell to use line breaks in tables
+\usepackage{makecell}
 
 % For \mathrel{\mathsmaller{.}} e.g.
 \usepackage{relsize}
