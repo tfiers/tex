@@ -7,8 +7,8 @@ Some preamble material common to multiple of my LaTeX documents.
 Usage example:
 ```tex
 \documentclass[a4paper,oneside,11pt]{memoir}
-\usepackage{import}
-\import{path/to/totex/}{To.tex}
+\input{totex/Settings}
+\input{totex/Commands}
 
 ..
 
