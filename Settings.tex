@@ -137,14 +137,17 @@
 % `biblatex' is fresher than `natbib'. "biber" is the program, biblatex is
 % the package.
 \usepackage[
-    backend=biber,
     citestyle=ieee,
-    sorting=none,
+    sorting=none,  % sort in citation order
     maxbibnames=20,
 ]{biblatex}
-% '.bib' extension is necessary.
-\addbibresource{references.bib}
+% If you want different biblatex settings, comment this section out and import biblatex in your own header. (Biblatex options can only be changed in \usepackage).
+\addbibresource{D:/references/References.bib}
+% % '.bib' extension is necessary.
 \newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
+%
+% To print bibliography:
+\newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
 
 % `\vref` cleverly adds the page number to a reference.
