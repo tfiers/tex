@@ -47,6 +47,9 @@
 \usepackage{palatino}
 \renewcommand{\sfdefault}{cmss}
 
+% \lipsum
+\usepackage{lipsum}
+
 % Make typography easier on the eye.
 % (Characters may expand into the margins so that the margins are psycho-visually straight; Font width may vary line by line, so that the interword spacing becomes more even).
 \usepackage{microtype}
@@ -107,10 +110,17 @@
 %
 \usepackage{geometry}
 \geometry{
-    top=35mm,
+    top=25mm,
     bottom=35mm,
 }
 % \usepackage{showframe}
+%
+% \setlength{\trimtop}{0mm}
+% \setlength{\uppermargin}{0mm}
+% \checkandfixthelayout
+
+% To rotate a page. \begin{landscape}, \end{landscape}
+\usepackage{pdflscape}
 
 % Paragraph spacing
 \setlength{\parindent}{0em}
