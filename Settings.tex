@@ -159,9 +159,6 @@
 \addbibresource{D:/References.bib}
 % '.bib' extension is necessary.
 \newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
-%
-% To print bibliography:
-\newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
 
 % `\vref` cleverly adds the page number to a reference.
@@ -199,3 +196,11 @@
 %
 % Making sure we get all PDF bookmarks after this second TOC weirdness:
 \hypersetup{bookmarksdepth=4}
+%
+% To use where you want the appencix TOC:
+\newcommand{\AppendixTOC}{
+\clearpage
+\addappheadtotoc
+\cftinserthook{toc}{BREAK}
+\appendixtableofcontents
+}
