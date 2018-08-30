@@ -9,9 +9,7 @@ Usage example:
 \documentclass[a4paper,oneside,11pt]{memoir}
 \input{totex/Settings}
 \input{totex/Commands}
-
 ..
-
 \begin{document}
 ..
 \end{document}
