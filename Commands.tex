@@ -1,8 +1,18 @@
 % Star indicate that these are short commands (not containing whole paragraphs)
 \newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
+\newcommand*{\captionnoftable}[2]{\captionof{table}{\textbf{#1}. #2}}
+
 \newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
 \newcommand*{\sectionn}[2]{\section[#1]{#1\\{\large #2}}}
 \newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
+
+% For use in captions
+\newcommand*{\Left}{\emph{Left}}
+\newcommand*{\Center}{\emph{Center}}
+\newcommand*{\Right}{\emph{Right}}
+\newcommand*{\Top}{\emph{Top}}
+\newcommand*{\Middle}{\emph{Middle}}
+\newcommand*{\Bottom}{\emph{Bottom}}
 
 \newenvironment{deflist}
     {\vspace{1em}\tabularx{\textwidth}{l X}}

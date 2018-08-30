@@ -1,4 +1,8 @@
 % We're assuming memoir here.
+%
+% If you want to write an article instead of someting larger with chapters,
+% use the `article' option for documentclass, and specify
+% `chapterstyle{komalike}'
 
 % Use 8 bits per glyph in the output, instead of 7.
 % Advantages: https://tex.stackexchange.com/a/677
@@ -21,6 +25,8 @@
 
 % `\includegraphics` and its options
 \usepackage{graphicx}
+% Specify root directories for your figures with:
+% \graphicspath{{subdir1/}{subdir2/}}
 
 % For multiple subfigures within one `figure`.
 \usepackage{subcaption}
@@ -41,6 +47,9 @@
 \usepackage{palatino}
 \renewcommand{\sfdefault}{cmss}
 
+% \lipsum
+\usepackage{lipsum}
+
 % Make typography easier on the eye.
 % (Characters may expand into the margins so that the margins are psycho-visually straight; Font width may vary line by line, so that the interword spacing becomes more even).
 \usepackage{microtype}
@@ -58,8 +67,25 @@
 \setfloatadjustment{figure}{\sffamily\centerfloat}
 \setfloatadjustment{table}{\sffamily\centering}
 
-% Nicer table lines
+% To place a table and figure next to each other (\captionof{table}{..}):
+% https://tex.stackexchange.com/questions/103206/figure-and-table-next-to-each-other-memoir-class
+\usepackage{capt-of}
+
+% Nicer table lines. Use \toprule, \midrule, \bottomrule
 \usepackage{booktabs}
+
+% To additionally remove left and right space:
+% \begin{tabular}{@{}lll@{}}
+
+% Some more space between rows
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\ra{1.2}
+
+% Use as \multirow{nrows}{*}{Cell contents}
+\usepackage{multirow}
+
+% A command \makecell to use line breaks in tables
+\usepackage{makecell}
 
 % For \mathrel{\mathsmaller{.}} e.g.
 \usepackage{relsize}
@@ -69,6 +95,9 @@
 
 % For ℝ e.g.
 \usepackage{amssymb}
+
+% A command \bm{.} to boldface math symbols or entire math expressions.
+\usepackage{bm}
 
 % \num{1e-10} becomes nice exponential notation.
 % Also: \SI{1e-10}{\meter\per\second}
@@ -85,10 +114,17 @@
 %
 \usepackage{geometry}
 \geometry{
-    top=35mm,
+    top=25mm,
     bottom=35mm,
 }
 % \usepackage{showframe}
+%
+% \setlength{\trimtop}{0mm}
+% \setlength{\uppermargin}{0mm}
+% \checkandfixthelayout
+
+% To rotate a page. \begin{landscape}, \end{landscape}
+\usepackage{pdflscape}
 
 % Paragraph spacing
 \setlength{\parindent}{0em}
@@ -115,15 +151,18 @@
 % `biblatex' is fresher than `natbib'. "biber" is the program, biblatex is
 % the package.
 \usepackage[
-    backend=biber,
     citestyle=ieee,
-    sorting=none,
+    sorting=none,  % sort in citation order
     maxbibnames=20,
 ]{biblatex}
-\addbibresource{references.bib}
+% If you want different biblatex settings, comment this section out and import biblatex in your own header. (Biblatex options can only be changed in \usepackage).
+\addbibresource{D:/references/References.bib}
 % '.bib' extension is necessary.
 \newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
 %
+% To print bibliography:
+\newcommand*{\References}{\clearpage\printbibliography[title=References]}
+
 
 % `\vref` cleverly adds the page number to a reference.
 \usepackage{varioref}
