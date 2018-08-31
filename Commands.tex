@@ -1,11 +1,4 @@
 % Star indicate that these are short commands (not containing whole paragraphs)
-\newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
-\newcommand*{\captionnoftable}[2]{\captionof{table}{\textbf{#1}. #2}}
-
-\newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
-\newcommand*{\sectionn}[2]{\section[#1]{#1\\{\large #2}}}
-\newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
-
 \newcommand*{\TOC}{
 \pdfbookmark{Contents}{contents-bookmark}
 \tableofcontents*
@@ -15,6 +8,15 @@
 \printbibliography[title=References]
 }
 
+\newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
+\newcommand*{\sectionn}[2]{\section[#1]{#1\\{\large #2}}}
+\newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
+
+% Default arguments, from the guide: http://tex.loria.fr/ctan-doc/macros/latex/doc/html/usrguide/node18.html
+\newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{#2}}
+
+\newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
+\newcommand*{\captionnoftable}[2]{\captionof{table}{\textbf{#1}. #2}}
 
 % For use in captions
 \newcommand*{\Left}{\emph{Left}}
@@ -24,6 +26,11 @@
 \newcommand*{\Middle}{\emph{Middle}}
 \newcommand*{\Bottom}{\emph{Bottom}}
 
+\newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
+
+\newcommand{\SIrangee}[3]{
+\SIrange[range-phrase=\,--\,,range-units=single]{#1}{#2}{#3}}
+
 \newenvironment{deflist}
     {\vspace{1em}\tabularx{\textwidth}{l X}}
     {\endtabularx}
@@ -31,16 +38,13 @@
 \newcommand*{\abbr}[3]{\textbf{#1} & \emph{#2}. #3 \\[1em]}
 \newcommand*{\gloss}[2]{\textbf{#1} & #2 \\[1em]}
 
-% Default arguments, from the guide: http://tex.loria.fr/ctan-doc/macros/latex/doc/html/usrguide/node18.html
-\newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{#2}}
-
 \newcommand*{\reals}{\mathbb{R}}
 \newcommand*{\trans}{^T}  % More straight: ^{\mkern-1.5mu\mathsf{T}}
 \newcommand*{\tdots}{\,..\,}  % two dots
 \newcommand*{\tcdots}{\,\cdot\cdot\,}
 
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max\,}
+\DeclareMathOperator*{\argmin}{arg\,min\,}
 \DeclareMathOperator*{\Var}{Var}
 \DeclareMathOperator*{\Cov}{Cov}
 \DeclareMathOperator*{\st}{subject\ to\ }

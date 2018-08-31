@@ -102,8 +102,12 @@
 % \num{1e-10} becomes nice exponential notation.
 % Also: \SI{1e-10}{\meter\per\second}
 \usepackage{siunitx}
+\sisetup{detect-all}  % Adapt to surrounding font
 \sisetup{inter-unit-product = \ensuremath{{} \cdot {}}}
-\sisetup{per-mode = symbol}
+\sisetup{per-mode = symbol}  % C / s
+% From {1 Hz to 5 Hz} to {1 -- 5 Hz}
+% \sisetup{range-phrase = \,--\,}
+% \sisetup{range-units = single}
 
 % Nice derivatives
 \usepackage{physics}
@@ -158,7 +162,6 @@
 % If you want different biblatex settings, comment this section out and import biblatex in your own header. (Biblatex options can only be changed in \usepackage).
 \addbibresource{D:/References.bib}
 % '.bib' extension is necessary.
-\newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
 
 
 % `\vref` cleverly adds the page number to a reference.
