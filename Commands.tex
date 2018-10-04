@@ -8,13 +8,20 @@
 \printbibliography[title=References]
 }
 
+% Subtitles for headings
 \newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
 \newcommand*{\sectionn}[2]{\section[#1]{#1\\{\large #2}}}
 \newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
 
+% Page number goals for headings
+\newcommand*{\chapterp}[2]{\chapter{#2 [#1]}}
+\newcommand*{\sectionp}[2]{\section{#2 [#1]}}
+\newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
+
 % Default arguments, from the guide: http://tex.loria.fr/ctan-doc/macros/latex/doc/html/usrguide/node18.html
 \newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{#2}}
 
+% Usage: \captionn{Bolded figure title}{Rest of figure caption}
 \newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
 \newcommand*{\captionnoftable}[2]{\captionof{table}{\textbf{#1}. #2}}
 
