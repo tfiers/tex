@@ -1,9 +1,13 @@
-% Star indicate that these are short commands (not containing whole paragraphs)
-\newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}\tableofcontents*}
-\newcommand*{\References}{\clearpage\printbibliography[title=References]}
+% Stars indicate short commands (not containing whole paragraphs)
 
 % Assuming organization: ./parts/[Chapter-Name]/index.tex
 \newcommand*{\includepart}[1]{\import{parts/#1/}{index}}
+
+\newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}\tableofcontents*}
+\newcommand*{\References}{\clearpage\printbibliography[title=References]}
+
+% Adds an unnumered \chapter* to the table of contents (using an arbitrary id as argument).
+\newcommand*{\addToTOC}[1]{\label{sec:#1}\addcontentsline{toc}{chapter}{\nameref{sec:#1}}}
 
 % Subtitles for headings
 \newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
