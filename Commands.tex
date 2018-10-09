@@ -2,8 +2,8 @@
 \newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}\tableofcontents*}
 \newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
-% Assuming organization: ./chapters/[Chapter-Name]/index.tex
-\newcommand*{\includechapter}[1]{\includefrom{chapters/#1/}{index}}
+% Assuming organization: ./parts/[Chapter-Name]/index.tex
+\newcommand*{\includepart}[1]{\import{parts/#1/}{index}}
 
 % Subtitles for headings
 \newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
