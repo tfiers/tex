@@ -18,8 +18,8 @@
 \newcommand*{\sectionp}[2]{\section{#2 [#1]}}
 \newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
 
-% Default arguments, from the guide: http://tex.loria.fr/ctan-doc/macros/latex/doc/html/usrguide/node18.html
-\newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{#2}}
+% Convention: images are stored in a `figures/' subdir
+\newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{figures/#2}}
 
 % Usage: \captionn{Bolded figure title}{Rest of figure caption}
 \newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
