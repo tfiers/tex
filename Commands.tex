@@ -6,7 +6,7 @@
 \newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}\tableofcontents*}
 \newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
-% Adds an unnumered \chapter* to the table of contents (using an arbitrary id as argument).
+% Adds an unnumered \chapter* to the table of contents (using an arbitrary ID as argument).
 \newcommand*{\addToTOC}[1]{\label{sec:#1}\addcontentsline{toc}{chapter}{\nameref{sec:#1}}}
 
 % Subtitles for headings
@@ -43,7 +43,7 @@
     {\vspace{1em}\tabularx{\textwidth}{l X}}
     {\endtabularx}
 \newcommand*{\notation}[2]{$#1$ & #2 \\[0.6em]}
-\newcommand*{\abbr}[3]{\textbf{#1} & \emph{#2}. #3 \\[0.6em]}
+\newcommand*{\abbr}[3]{\textbf{#1} & #2. #3 \\[0.6em]}
 \newcommand*{\gloss}[2]{\textbf{#1} & #2 \\[0.6em]}
 
 \newcommand*{\reals}{\mathbb{R}}
