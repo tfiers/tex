@@ -7,7 +7,7 @@
 \newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
 % Adds an unnumered \chapter* to the table of contents (using an arbitrary ID as argument).
-\newcommand*{\addToTOC}[1]{\label{sec:#1}\addcontentsline{toc}{chapter}{\nameref{sec:#1}}}
+\newcommand*{\addToTOC}[1]{\addcontentsline{toc}{chapter}{\nameref{#1}}}
 
 % Subtitles for headings
 \newcommand*{\chapterr}[2]{\chapter[#1]{#1\\{\large #2}}}
