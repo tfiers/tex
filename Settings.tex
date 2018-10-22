@@ -33,7 +33,9 @@
 % Specify root directories for your figures with:
 % \graphicspath{{subdir1/}{subdir2/}}
 
-% For multiple subfigures within one `figure`.
+\usepackage{tikz}
+
+% Provides \begin{subfigure}
 \usepackage{subcaption}
 
 % On figure placement:
@@ -168,6 +170,8 @@
 \addbibresource{D:/References.bib}
 % '.bib' extension is necessary.
 
+% Better commands (macros / functions)
+\usepackage{xparse}
 
 % `\vref` cleverly adds the page number to a reference.
 \usepackage{varioref}

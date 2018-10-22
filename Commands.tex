@@ -3,7 +3,7 @@
 % Assuming organization: ./modules/[Chapter-Name]/index.tex
 \newcommand*{\module}[1]{\import{modules/#1/}{index}}
 
-\newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}\tableofcontents*}
+\newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}{\hypersetup{hidelinks}\tableofcontents*}}
 \newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
 % Adds an unnumered \chapter* to the table of contents (using an arbitrary ID as argument).
@@ -19,10 +19,33 @@
 \newcommand*{\sectionp}[2]{\section{#2 [#1]}}
 \newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
 
-% Convention: images are stored in a `figures/' subdir
-\newcommand*{\img}[2][1]{\includegraphics[width=#1\textwidth]{figures/#2}}
+% >>> Convention: images are stored in a `figures/' subdir <<<
+%
+% Usage: \img[rel-width]{filename}
+\NewDocumentCommand{\img}{O{1} m}{\includegraphics[width=#1\textwidth]{figures/#2}}
+
+% An image with a label overlaid ("A" e.g.).
+% Usage: \panelimg[rel-width][x,y]{filename}{Panel-letter}
+%   where (x,y) is the label position, given as fractions of image width and
+%   height, relative to the top-left corner.
+\NewDocumentCommand{\panelimg}{O{0.5} O{0.1, 0} m m}{\begin{tikzpicture}
+\node[anchor = north west, inner sep = 0] (image) at (0,0) {\img[#1]{#3}};
+\begin{scope}[x={(image.north east)},y={(image.south west)}]
+    \node at (#2) {\textbf{\sffamily\Large{#4}}};
+\end{scope}
+\end{tikzpicture}}
+
+% Reference-able subfigures.
+% Usage: \subimg[rel-width]{filename}{label}
+\NewDocumentCommand{\subimg}{O{0.6} m m}{\begin{subfigure}{#1\textwidth}
+\img[1]{#2}\caption{}\label{#3}
+\end{subfigure}}
+
+\newcommand*{\panelref}[2]{\cref{#1}#2}
+\newcommand*{\Panelref}[2]{\Cref{#1}#2}
 
 % Usage: \captionn{Bolded figure title}{Rest of figure caption}
+% Weird: using \\ inside captions errors, but \newline works.
 \newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
 \newcommand*{\captionnoftable}[2]{\captionof{table}{\textbf{#1}. #2}}
 
@@ -33,7 +56,7 @@
 \newcommand*{\Top}{\emph{Top}}
 \newcommand*{\Middle}{\emph{Middle}}
 \newcommand*{\Bottom}{\emph{Bottom}}
-\newcommand*{\panel}[1]{\textbf{#1.}}
+\newcommand*{\panel}[1]{\newline\textbf{#1.}}
 
 \newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
 
