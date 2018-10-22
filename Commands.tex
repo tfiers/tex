@@ -44,10 +44,10 @@
 \newcommand*{\panelref}[2]{\cref{#1}#2}
 \newcommand*{\Panelref}[2]{\Cref{#1}#2}
 
-% Usage: \captionn{Bolded figure title}{Rest of figure caption}
+% Usage: \captionn[sep]{Bolded figure title}{Rest of figure caption}
 % Weird: using \\ inside captions errors, but \newline works.
-\newcommand*{\captionn}[2]{\caption{\textbf{#1}. #2}}
-\newcommand*{\captionnoftable}[2]{\captionof{table}{\textbf{#1}. #2}}
+\NewDocumentCommand{\captionn}{O{. } m m}{\caption{\textbf{#2}#1#3}}
+\NewDocumentCommand{\captionnoftable}{O{. } m m}{\captionof{table}{\textbf{#2}#1#3}}
 
 % For use in captions
 \newcommand*{\Left}{\emph{Left}}
