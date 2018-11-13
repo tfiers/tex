@@ -58,7 +58,8 @@
 \newcommand*{\Bottom}{\emph{Bottom}}
 \newcommand*{\panel}[1]{\newline\textbf{#1.}}
 
-\newcommand*{\citefull}[1]{\citeauthor*{#1} \citeyear{#1} \cite{#1}}
+\newcommand*{\authoryear}[1]{\citeauthor*{#1} \citeyear{#1}}
+\newcommand*{\citefull}[1]{\authoryear{#1} \cite{#1}}
 
 \newcommand{\range}[3]{
 \SIrange[range-phrase=\,--\,,range-units=single]{#1}{#2}{#3}}
