@@ -188,31 +188,31 @@
 % }
 
 
-% A separate TOC for the appendices.
-% Adapted from "sniplet C.8" of the Memoir manual.
-%
-\cftinsertcode{BREAK}{\changetocdepth{-10}}
-\let\normalchangetocdepth\changetocdepth
-%
-\makeatletter
-\newcommand\appendixtableofcontents{
-    \begingroup
-    \let\changetocdepth\@gobble
-    \normalchangetocdepth{-10}
-    \cftinsertcode{BREAK}{\normalchangetocdepth{3}}
-    \renewcommand\contentsname{Appendices}
-    \tableofcontents*
-    \endgroup
-}
-\makeatother
-%
-% Making sure we get all PDF bookmarks after this second TOC weirdness:
-\hypersetup{bookmarksdepth=4}
-%
-% To use where you want the appencix TOC:
-\newcommand{\AppendixTOC}{
-\clearpage
-\addappheadtotoc
-\cftinserthook{toc}{BREAK}
-\appendixtableofcontents
-}
+% % A separate TOC for the appendices.
+% % Adapted from "sniplet C.8" of the Memoir manual.
+% %
+% \cftinsertcode{BREAK}{\changetocdepth{-10}}
+% \let\normalchangetocdepth\changetocdepth
+% %
+% \makeatletter
+% \newcommand\appendixtableofcontents{
+%     \begingroup
+%     \let\changetocdepth\@gobble
+%     \normalchangetocdepth{-10}
+%     \cftinsertcode{BREAK}{\normalchangetocdepth{3}}
+%     \renewcommand\contentsname{Appendices}
+%     \tableofcontents*
+%     \endgroup
+% }
+% \makeatother
+% %
+% % Making sure we get all PDF bookmarks after this second TOC weirdness:
+% \hypersetup{bookmarksdepth=4}
+% %
+% % To use where you want the appendix TOC:
+% \newcommand{\AppendixTOC}{
+% \clearpage
+% \addappheadtotoc
+% \cftinserthook{toc}{BREAK}
+% \appendixtableofcontents
+% }
