@@ -66,6 +66,16 @@
 \newcommand*{\Bottom}{\emph{Bottom}}
 \newcommand*{\panel}[1]{\newline\textbf{#1.}}
 
+\NewDocumentEnvironment{quotebar}{}
+{
+    \def\FrameCommand{\vrule width 0.5pt \hspace{10pt}}
+    \MakeFramed
+    {\advance\hsize-\width \FrameRestore}
+}
+{
+    \endMakeFramed
+}
+
 \newcommand*{\authoryear}[1]{\citeauthor*{#1} \citeyear{#1}}
 \newcommand*{\citefull}[1]{\authoryear{#1} \cite{#1}}
 
