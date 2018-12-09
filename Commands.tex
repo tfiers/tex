@@ -15,14 +15,22 @@
 \newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
 
 % Page number goals for headings
-\newcommand*{\chapterp}[2]{\chapter{#2 [#1]}}
-\newcommand*{\sectionp}[2]{\section{#2 [#1]}}
-\newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
+\newcommand*{\chapterp}[2]{\chapter{#2}}
+\newcommand*{\sectionp}[2]{\section{#2}}
+\newcommand*{\subsectionp}[2]{\subsection{#2}}
+% \newcommand*{\chapterp}[2]{\chapter{#2 [#1]}}
+% \newcommand*{\sectionp}[2]{\section{#2 [#1]}}
+% \newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
 
 % >>> Convention: images are stored in a `figures/' subdir <<<
 %
 % Usage: \img[rel-width]{filename}
-\NewDocumentCommand{\img}{O{1} m}{\includegraphics[width=#1\textwidth]{figures/#2}}
+\NewDocumentCommand{\img}{O{1} m}
+{
+    \IfNoValueTF{#1}
+    {\includegraphics{figures/#2}}
+    {\includegraphics[width=#1\textwidth]{figures/#2}}
+}
 
 % An image with a label overlaid ("A" e.g.).
 % Usage: \panelimg[rel-width][x,y]{filename}{Panel-letter}
