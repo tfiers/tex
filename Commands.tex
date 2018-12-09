@@ -25,7 +25,7 @@
 % >>> Convention: images are stored in a `figures/' subdir <<<
 %
 % Usage: \img[rel-width]{filename}
-\NewDocumentCommand{\img}{O{1} m}
+\NewDocumentCommand{\img}{o m}
 {
     \IfNoValueTF{#1}
     {\includegraphics{figures/#2}}
