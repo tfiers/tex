@@ -82,10 +82,18 @@
 \usepackage{capt-of}
 
 % Nicer table lines. Use \toprule, \midrule, \bottomrule
+% (Has tabularx as an automatic dependency)
 \usepackage{booktabs}
 
 % To additionally remove left and right space:
 % \begin{tabular}{@{}lll@{}}
+
+\usepackage{longtable}
+
+% Combines tabularx with longtables. No extra commands necessary for multi-page tables.
+\usepackage{ltablex}
+
+\usepackage{tabto}
 
 % Some more space between rows
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}

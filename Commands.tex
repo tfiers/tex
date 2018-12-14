@@ -82,9 +82,10 @@
 \newcommand{\range}[3]{
 \SIrange[range-phrase=\,--\,,range-units=single]{#1}{#2}{#3}}
 
+% We have to set column widths manually (instead of using `\tabularx{\linewidth}{l X} ... \endtabularx` to auto-scale the second column). This is because ltablex (the tabularx equivalent of longtable) does not work with `newenvironment'.
 \newenvironment{deflist}
-    {\vspace{1em}\tabularx{\textwidth}{l X}}
-    {\endtabularx}
+    {\vspace{0.8em}\begin{longtable}{p{4em} p{32em}}}
+    {\end{longtable}}}
 \newcommand*{\notation}[2]{$#1$ & #2 \\[0.6em]}
 \newcommand*{\abbr}[3]{\textbf{#1} & #2. #3 \\[0.6em]}
 \newcommand*{\gloss}[2]{\textbf{#1} & #2 \\[0.6em]}
