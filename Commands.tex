@@ -76,8 +76,18 @@
     \endMakeFramed
 }
 
-\newcommand*{\authoryear}[1]{\citeauthor*{#1} \citeyear{#1}}
-\newcommand*{\citefull}[1]{\authoryear{#1} \cite{#1}}
+% starred command
+\NewDocumentCommand\authoryear{s m}{%
+  \IfBooleanTF#1%
+    {\citeauthor{#2} \citeyear{#2}}%  star
+    {\citeauthor*{#2} \citeyear{#2}}%  no star
+}
+
+\NewDocumentCommand\citefull{s m}{%
+  \IfBooleanTF#1%
+    {\authoryear*{#2} \cite{#2}}%  star
+    {\authoryear{#2} \cite{#2}}%  no star
+}
 
 \newcommand{\range}[3]{
 \SIrange[range-phrase=\,--\,,range-units=single]{#1}{#2}{#3}}
@@ -105,7 +115,6 @@
 \newcommand*{\median}[1]{\widetilde{#1}}
 \newcommand*{\mean}[1]{\overline{#1}}
 
-
 \newcommand*{\mat}[1]{\vb{#1}}
 \newcommand*{\diag}[1]{\operatorname{diag}\qty(#1)}
 \newcommand*{\qed}{\hfill\ensuremath{\square}}
@@ -113,3 +122,4 @@
 \newcommand*{\had}{\mathrel{\mathsmaller{\mathsmaller{\odot}}}}
 % Pointwise multiplication (Hadamard product).
 % From https://latex.org/forum/viewtopic.php?t=27766
+\newcommand*{\given}{\;\vert\;}
