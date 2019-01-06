@@ -76,7 +76,7 @@
     \endMakeFramed
 }
 
-% starred command
+% Add star to list all authors. Default = et al.
 \NewDocumentCommand\authoryear{s m}{%
   \IfBooleanTF#1%
     {\citeauthor{#2} \citeyear{#2}}%  star
