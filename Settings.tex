@@ -159,9 +159,9 @@
 
 % https://tex.stackexchange.com/a/26522
 \setlength{\textfloatsep}{22.0pt plus 2.0pt minus 4.0pt}
-\setlength{\floatsep}{16.0pt plus 2.0pt minus 2.0pt}
+\setlength{\floatsep}{18.0pt plus 2.0pt minus 2.0pt}
 
-\setlength{\abovecaptionskip}{20pt plus 3pt minus 2pt}
+\setlength{\abovecaptionskip}{8pt plus 3pt minus 2pt}
 
 % Subsection spacing
 \setbeforesecskip{5.0ex plus 1ex minus .2ex}
@@ -191,7 +191,9 @@
 % `\vref` cleverly adds the page number to a reference.
 \usepackage{varioref}
 \usepackage[hidelinks]{hyperref}
-\usepackage[nameinlink]{cleveref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+% `noabbrev' yields "figure 1" instead of "fig. 1".
+% `nameinlink' makes "figure 1" clickable, not just the "1".
 
 \definecolor{PleasantBlue}{RGB}{13, 127, 172}
 
