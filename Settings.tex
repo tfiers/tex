@@ -175,15 +175,29 @@
 % `biblatex' is fresher than `natbib'. "biber" is the program, biblatex is
 % the package.
 \usepackage[
-    citestyle=ieee,
-    sorting=none,  % sort in citation order
+    style=alphabetic,
+    % sorting=none,  % sort in citation order
     maxbibnames=20,
 ]{biblatex}
-% If you want different biblatex settings, comment this section out and import biblatex in your own header. (Biblatex options can only be changed in \usepackage).
+% Note: Biblatex options can only be changed in \usepackage, so here.
 %
 % In your preamble:
 % \addbibresource{myrefs.bib}
 % '.bib' extension is necessary.
+
+% Don't print url if there's doi.
+% Thx https://tex.stackexchange.com/a/154875/153868
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+        \map{
+            \step[fieldsource=doi,final]
+            \step[fieldset=url,null]
+        }
+    }
+}
+
+% Linebreaks in urls.
+\usepackage{xurl}
 
 % Better commands (macros / functions)
 \usepackage{xparse}

@@ -58,12 +58,12 @@
 \NewDocumentCommand{\captionnoftable}{O{ } m m}{\captionof{table}{\textbf{#2}#1#3}}
 
 % For use in captions
-\newcommand*{\Left}{\emph{Left}}
-\newcommand*{\Center}{\emph{Center}}
-\newcommand*{\Right}{\emph{Right}}
-\newcommand*{\Top}{\emph{Top}}
-\newcommand*{\Middle}{\emph{Middle}}
-\newcommand*{\Bottom}{\emph{Bottom}}
+\newcommand*{\Left}{\emph{Left}\xspace}
+\newcommand*{\Center}{\emph{Center}\xspace}
+\newcommand*{\Right}{\emph{Right}\xspace}
+\newcommand*{\Top}{\emph{Top}\xspace}
+\newcommand*{\Middle}{\emph{Middle}\xspace}
+\newcommand*{\Bottom}{\emph{Bottom}\xspace}
 \newcommand*{\panel}[1]{\newline\textbf{#1.}}
 
 \NewDocumentEnvironment{quotebar}{}
@@ -101,7 +101,7 @@
 \newcommand*{\abbr}[3]{\textbf{#1} & #2. #3 \\[0.6em]}
 \newcommand*{\gloss}[2]{\textbf{#1} & #2 \\[0.6em]}
 
-\newcommand*{\fnm}{\footnotemark{}}
+\newcommand*{\fnm}{\footnotemark{}\xspace}
 \newcommand*{\fnt}[1]{\footnotetext{#1}}
 
 \newcommand*{\reals}{\mathbb{R}}
