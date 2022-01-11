@@ -14,3 +14,5 @@ Usage example:
 ..
 \end{document}
 ```
+
+❗ Make sure `cm-super` is installed, and in MiKTeX console, run *Tasks* > *Refresh font map files*. If not you'll get the dreaded `auto expansion is only possible with scalable fonts`.
