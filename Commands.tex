@@ -6,7 +6,7 @@
 \newcommand*{\TOC}{\pdfbookmark{Contents}{contents-bookmark}{\hypersetup{hidelinks}\tableofcontents*}}
 \newcommand*{\References}{\clearpage\printbibliography[title=References]}
 
-% Adds an unnumered \chapter* to the table of contents (using an arbitrary ID as argument).
+% Adds an unnumbered \chapter* to the table of contents (using an arbitrary ID as argument).
 \newcommand*{\addToTOC}[1]{\addcontentsline{toc}{chapter}{\nameref{#1}}}
 
 % Subtitles for headings
@@ -21,6 +21,17 @@
 % \newcommand*{\chapterp}[2]{\chapter{#2 [#1]}}
 % \newcommand*{\sectionp}[2]{\section{#2 [#1]}}
 % \newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
+
+
+\newcommand*{\singlechapter}{
+    % To have "fig/table/eq 1" instead of "fig/table/eq 1.1".
+    \counterwithout{figure}{chapter}
+    \counterwithout{table}{chapter}
+    \counterwithout{equation}{chapter}
+
+    % To have section numbers "1" instead of "0.1".
+    \renewcommand*\thesection{\arabic{section}}
+}
 
 % >>> Convention: images are stored in a `figures/' subdir <<<
 %
