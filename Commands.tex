@@ -14,14 +14,6 @@
 \newcommand*{\sectionn}[2]{\section[#1]{#1\\{\large #2}}}
 \newcommand*{\subsectionn}[2]{\subsection[#1]{#1\\{\large #2}}}
 
-% Page number goals for headings
-\newcommand*{\chapterp}[2]{\chapter{#2}}
-\newcommand*{\sectionp}[2]{\section{#2}}
-\newcommand*{\subsectionp}[2]{\subsection{#2}}
-% \newcommand*{\chapterp}[2]{\chapter{#2 [#1]}}
-% \newcommand*{\sectionp}[2]{\section{#2 [#1]}}
-% \newcommand*{\subsectionp}[2]{\subsection{#2 [#1]}}
-
 
 \newcommand*{\singlechapter}{
     % To have "fig/table/eq 1" instead of "fig/table/eq 1.1".
@@ -77,6 +69,8 @@
 \newcommand*{\Bottom}{\emph{Bottom}\xspace}
 \newcommand*{\panel}[1]{\newline\textbf{#1.}}
 
+
+% For making nice, pagebreak-able quotes with a line on the left.
 \NewDocumentEnvironment{quotebar}{}
 {
     \def\FrameCommand{\vrule width 0.5pt \hspace{10pt}}
