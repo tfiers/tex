@@ -4,6 +4,10 @@
 % use the `article' option for documentclass, and specify
 % `chapterstyle{komalike}'
 
+% Package loading times could be profiled as here:
+% https://tex.stackexchange.com/questions/141661/package-loading-speeds
+% There, tikz takes 0.1 seconds, siunitx 0.2 seconds.
+
 % Use 8 bits per glyph in the output, instead of 7.
 % Advantages: https://tex.stackexchange.com/a/677
 \usepackage[T1]{fontenc}
@@ -20,15 +24,10 @@
 % To be able to include modern pdf's
 \pdfminorversion=8
 
-% \import, \subimport, and \includefrom commands
-% Overleaf tutorial: https://www.overleaf.com/learn/latex/Management_in_a_large_project#Importing_files
-% If \includefrom gives troubles, try \import.
-\usepackage{import}
-
 \headstyles{komalike}
 \chapterstyle{bianchi}
 
-% cft = Memoir mnemonic for (table of) Contents, (list of) Figures, 
+% cft = Memoir mnemonic for (table of) Contents, (list of) Figures,
 % and (list of) tables
 \renewcommand{\cftchapterfont}{\bfseries\sffamily}
 \renewcommand{\cftsectionfont}{\normalfont\sffamily}
@@ -50,12 +49,9 @@
 % On figure placement:
 %  - https://tex.stackexchange.com/a/39020
 %  - https://robjhyndman.com/hyndsight/latex-floats/
-% 
+%
 % The default placement specifier is (probably) [tbp],
 % for top, bottom, own page.
-
-% For making nice, pagebreak-able quotes with a line on the left.
-\usepackage{framed}
 
 % Palatino (a nice serif font) for serif text & for math.
 % \usepackage[sc]{mathpazo}
@@ -65,9 +61,6 @@
 % Math text: Default (Computer Modern)
 \usepackage{palatino}
 \renewcommand{\sfdefault}{cmss}
-
-% \lipsum
-\usepackage{lipsum}
 
 % Make typography easier on the eye.
 % (Characters may expand into the margins so that the margins are psycho-visually straight; Font width may vary line by line, so that the interword spacing becomes more even).
@@ -101,8 +94,6 @@
 
 % Combines tabularx with longtables. No extra commands necessary for multi-page tables.
 \usepackage{ltablex}
-
-\usepackage{tabto}
 
 % Some more space between rows
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}

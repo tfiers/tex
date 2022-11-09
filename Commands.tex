@@ -57,17 +57,6 @@
 \newcommand*{\panel}[1]{\newline\textbf{#1.}}
 
 
-% For making nice, pagebreak-able quotes with a line on the left.
-\NewDocumentEnvironment{quotebar}{}
-{
-    \def\FrameCommand{\vrule width 0.5pt \hspace{10pt}}
-    \MakeFramed
-    {\advance\hsize-\width \FrameRestore}
-}
-{
-    \endMakeFramed
-}
-
 % Add star to list all authors. Default = et al.
 \NewDocumentCommand\authoryear{s m}{%
     \IfBooleanTF#1%
@@ -103,12 +92,6 @@
 
 \DeclareMathOperator*{\argmax}{arg\,max\,}
 \DeclareMathOperator*{\argmin}{arg\,min\,}
-\DeclareMathOperator*{\Var}{Var}
-\DeclareMathOperator*{\Cov}{Cov}
-\DeclareMathOperator*{\st}{subject\ to\ }
-\DeclareMathOperator*{\sigmoid}{\sigma}
-\DeclareMathOperator*{\std}{std}
-\newcommand*{\median}[1]{\widetilde{#1}}
 \newcommand*{\mean}[1]{\overline{#1}}
 
 \newcommand*{\mat}[1]{\vb{#1}}
