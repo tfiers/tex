@@ -8,6 +8,9 @@
 % https://tex.stackexchange.com/questions/141661/package-loading-speeds
 % There, tikz takes 0.1 seconds, siunitx 0.2 seconds.
 
+% For package documentation links: hover over pkg name in VS Code w/ Latex-Workshop
+% (If no local docs, as with the TinyTeX distribution, use CTAN link).
+
 % Use 8 bits per glyph in the output, instead of 7.
 % Advantages: https://tex.stackexchange.com/a/677
 \usepackage[T1]{fontenc}
@@ -17,6 +20,7 @@
 
 % Filter warnings
 \usepackage{silence}
+% Second arg is start of warning message
 \WarningFilter{caption}{Unused \captionsetup[subfloat]}
 \WarningFilter{microtype}{Unable to apply patch `footnote'}
 
@@ -127,11 +131,27 @@
 % \sisetup{range-phrase = \,--\,}
 % \sisetup{range-units = single}
 
-% Nice derivatives
-\usepackage{physics}
+% \usepackage{physics}  -- no: https://tex.stackexchange.com/a/628184/153868
+%
+% When using with siunitx, we get the warning:
+%     "Detected the "physics" package:
+%      omitting definition of \qty.
+%      If you want to use \qty with the siunitx definition, add
+%      \AtBeginDocument{\RenewCommandCopy\qty\SI}
+%      to your preamble."
+% Haven't succeeded on \WarningFilter'ing it, and the proposed fix doesn't do it either.
+%
+% We used physics for nice derivative symbols etc; we'll define those ourselves instead.
+% See:
+% - https://ctan.mirror.garr.it/mirrors/ctan/macros/latex/contrib/physics/physics.pdf)
+%    ↪ `\flatfrac` is from physics. Just use `/'.
+% - https://tex.stackexchange.com/questions/225523/how-to-write-partial-differential-equation-ex-dq-dt-ds-dt-with-real-partial-d
+% - `\mathrm{d}` :)
+
 
 % Ions
-\usepackage[version=4]{mhchem}
+% \usepackage[version=4]{mhchem}
+% I'll try and use normal supscripts for ions, to save a dep.
 
 %
 \usepackage{geometry}
@@ -194,19 +214,25 @@
 
 % `\vref` cleverly adds the page number to a reference.
 \usepackage{varioref}
+
+
 \usepackage[hidelinks]{hyperref}
-\usepackage[nameinlink,noabbrev]{cleveref}
-% `noabbrev' yields "figure 1" instead of "fig. 1".
-% `nameinlink' makes "figure 1" clickable, not just the "1".
+\usepackage{bookmark}
+% ↪ Gets rid of a hyperref warning.
+%      https://tex.stackexchange.com/a/167952/153868
+
+\usepackage[
+    noabbrev,       % "figure 1" instead of "fig. 1".
+    nameinlink,   % makes "figure 1" clickable, not just the "1".
+]{cleveref}
 
 \definecolor{PleasantBlue}{RGB}{13, 127, 172}
-
-% \hypersetup{
-%     colorlinks = true,
-%     linkcolor = PleasantBlue,
-%     citecolor = PleasantBlue,
-%     urlcolor = PleasantBlue,
-% }
+\hypersetup{
+    colorlinks = true,
+    linkcolor = PleasantBlue,
+    citecolor = PleasantBlue,
+    urlcolor = PleasantBlue,
+}
 
 % for the \singlechapter command.
 \usepackage{chngcntr}

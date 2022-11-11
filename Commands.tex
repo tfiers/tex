@@ -70,6 +70,12 @@
     {\authoryear{#2} \cite{#2}}%  no star
 }
 
+\NewDocumentCommand\Authorref{s m}{%
+    \IfBooleanTF#1%
+    {\citeauthor{#2} \cite{#2}}%  star
+    {\citeauthor*{#2} \cite{#2}}%  no star
+}
+
 \newcommand{\range}[3]{
     \SIrange[range-phrase=\,--\,,range-units=single]{#1}{#2}{#3}}
 
