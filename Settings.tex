@@ -39,7 +39,16 @@
 % `\includegraphics` and its options
 \usepackage{graphicx}
 % Specify root directories for your figures with:
-% \graphicspath{{subdir1/}{subdir2/}}
+%       \graphicspath{{subdir1/}{subdir2/}}
+%
+% Define option to make the following possible:
+%       \includegraphics[w=0.6]{blah.png}
+% See ./about_includegraphics_and_width.md for more info.
+\makeatletter
+ \define@key{Gin}{w}{%
+       \def\Gin@ewidth{#1\linewidth}%
+ }
+\makeatother
 
 \usepackage{tikz}
 
