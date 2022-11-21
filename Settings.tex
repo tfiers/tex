@@ -18,6 +18,10 @@
 % Allow UTF-8 characters in .tex files
 \usepackage[utf8]{inputenc}
 
+% Provides `\newunicodechar{ℝ}{\mathbb{R}}',
+% which is easier than `\DeclareUnicodeCharacter{211D}{\mathbb{R}}'.
+\usepackage{newunicodechar}
+
 % Filter warnings
 \usepackage{silence}
 % Second arg is start of warning message
@@ -50,7 +54,12 @@
  }
 \makeatother
 
-\usepackage{tikz}
+% Imports lots of other packages, and we don't really use it. So, cull.
+% (Compile time impact is small -- 40 ms -- but is there).
+% \usepackage{tikz}
+
+% Provides `\FloatBarrier'
+\usepackage{placeins}
 
 % `\printinunitsof{mm}\prntlen{\textwidth}`
 % `\uselengthunit{mm}\printlength{\textwidth}'
@@ -79,9 +88,12 @@
 % (Characters may expand into the margins so that the margins are psycho-visually straight; Font width may vary line by line, so that the interword spacing becomes more even).
 \usepackage{microtype}
 % For this to work with mathpazo, you have to manually install cm-super, and run updmap.
+%
+% Seems to have ~20 ms impact on compile time.
 
 \usepackage{caption}
-\captionsetup{margin=15pt}
+% \captionsetup{margin=15pt}
+%   Commented out to get more space, after memoir layout change nov 22.
 \captionsetup{font={sf}}
 \captionsetup[subfloat]{labelfont={bf}, labelformat=simple, labelsep=period}
 
@@ -157,17 +169,9 @@
 % - https://tex.stackexchange.com/questions/225523/how-to-write-partial-differential-equation-ex-dq-dt-ds-dt-with-real-partial-d
 % - `\mathrm{d}` :)
 
-
 % Ions
 % \usepackage[version=4]{mhchem}
 % I'll try and use normal supscripts for ions, to save a dep.
-
-%
-\usepackage{geometry}
-\geometry{
-    top=25mm,
-    bottom=35mm,
-}
 
 % To rotate a page. \begin{landscape}, \end{landscape}
 \usepackage{pdflscape}
@@ -185,6 +189,44 @@
 % Subsection spacing
 \setbeforesecskip{5.0ex plus 1ex minus .2ex}
 \setbeforesubsecskip{4.5ex plus 1ex minus .2ex}
+
+% No indent of footnote text
+%   Most common stex answer: \usepackage[flushmargin]{footmisc}
+%   But not compatible with memoir.
+% Note that \sidefootnote is not relevant (those are at the bottom of the page).
+% Instead, rel section is memoir 12.1.2 Footnotes > Styling
+% Defaults in comment behind:
+\setlength{\footmarkwidth}{-2pt}  %{1.8em}
+%   How much the mark is indented (weird name for that)
+\setlength{\footmarksep}{0em}  % {-\footmarkwidth}
+%   How much subsequent lines are indented.
+\setlength{\footparindent}{\parindent}  %{1em}
+%   How much subsequent paragraphs are indented.
+
+% See https://tex.stackexchange.com/questions/167072/memoir-footnotes-in-margin-with-ragged2e
+% for hacking on \footnotesinmargin ("tex is chaos").
+
+% Memoir commands
+\footnotesinmargin
+%   Rewrites \footnote, \footnotext etc as \marginpar
+%
+% Space for the margin notes
+% \setlength{\textwidth}{0.8\paperwidth}
+\settypeblocksize{*}{\lxvchars}{1.9}  % {textheight}{textwidth}{ratio}
+%   Sets the textwidth to the approx length of 65 characters (for current fontsize)
+%   (`\lxvchars'); and the textheight to be a factor of that.
+%
+\setlrmargins{0.08\paperwidth}{*}{*}  % {spine}{edge}{ratio}
+% For the righ-hand page of an open book ('recto'):
+% `spine' side is left margin of page.
+% `edge' or fore-edge is right margin.
+%
+\setmarginnotes{26pt}{0.28\paperwidth}{4pt}
+%   {x-sep-from-main}{max-width}{min-y-dist}
+
+%
+\checkandfixthelayout
+
 
 % Allows to call commands as `\cmd' instead of `\cmd{}', while still inserting a
 % space after. https://tex.stackexchange.com/a/31092/153868

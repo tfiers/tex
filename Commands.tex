@@ -26,6 +26,7 @@
 % Usage: \panelimg[rel-width][x,y]{filename}{Panel-letter}
 %   where (x,y) is the label position, given as fractions of image width and
 %   height, relative to the top-left corner.
+% Note that we by default do not load `tikz' (see Settings.tex)
 \NewDocumentCommand{\panelimg}{O{0.5} O{0.1, 0} m m}{\begin{tikzpicture}
         \node[anchor = north west, inner sep = 0] (image) at (0,0) {\includegraphics[width=#1\textwidth]{#3}};
         \begin{scope}[x={(image.north east)},y={(image.south west)}]
@@ -44,8 +45,13 @@
 
 % Usage: \captionn[sep]{Bolded figure title}{Rest of figure caption}
 % Weird: using \\ inside captions errors, but \newline works.
-\NewDocumentCommand{\captionn}{O{ } m m}{\caption{\textbf{#2}#1#3}}
-\NewDocumentCommand{\captionnoftable}{O{ } m m}{\captionof{table}{\textbf{#2}#1#3}}
+\NewDocumentCommand{\captionn}
+    {O{.\newline} m m}
+    {\caption{\textbf{#2#1}#3}}
+%
+\NewDocumentCommand{\captionnoftable}
+    {O{.\newline} m m}
+    {\captionof{table}{\textbf{#2#1}#3}}
 
 % For use in captions
 \newcommand*{\Left}{\emph{Left}\xspace}
@@ -88,8 +94,26 @@
 \newcommand*{\abbr}[3]{\textbf{#1} & #2. #3 \\[0.6em]}
 \newcommand*{\gloss}[2]{\textbf{#1} & #2 \\[0.6em]}
 
-\newcommand*{\fnm}{\footnotemark{}\xspace}
-\newcommand*{\fnt}[1]{\footnotetext{#1}}
+% I want to have both `\fn' as the mark in text, and then later `\fn{Blah}' for the
+% footnote text, too. That is possible with xparse, with the `g' argument type (that is "no longer recommended").
+% \newcommand*{\fn}{\footnotemark{}\xspace}
+% \newcommand*{\fnt}[1]{\footnotetext{#1}}
+\NewDocumentCommand{\fn}{g}{
+    \IfNoValueTF {#1}
+        {\footnotemark{}\xspace}
+        {\footnotetext{#1}}
+}
+% Could add support for \footnotmark[number]{} with arg structure `{o g}'.
+% https://www.overleaf.com/learn/latex/Footnotes#Storing_the_current_footnote_marker_value:_LaTeX_counters
+% Though we wouldn't want that really: it fucks with the auto-counter.
+% So you'd need to write extra code to handle it gracefully.
+% For now, we'll define the last footnote before referencing a new one.
+% (I.e. no paragraphs with one[1] and another[2] footnotemark; and then only defining both after the paragraph).
+% Counter tricks: https://en.wikibooks.org/wiki/LaTeX/Footnotes_and_Margin_Notes
+%
+% With memoir's `\footnotesinmargin' (and thus `\marginpar'),
+% footnotes/margin notes appear where they're defined, not where they're first
+% reffed. So alas, the above we won't use (and instead define inline always).
 
 \newcommand*{\reals}{\mathbb{R}}
 \newcommand*{\trans}{^T}  % More straight: ^{\mkern-1.5mu\mathsf{T}}
