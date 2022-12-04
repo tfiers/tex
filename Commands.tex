@@ -20,6 +20,18 @@
 
     % To have section numbers "1" instead of "0.1".
     \renewcommand*\thesection{\arabic{section}}
+
+    % To not make \tableofcontents* a Chapter
+    \renewcommand\tocheadstart{} % default is \chapterheadstart
+    \renewcommand\printtoctitle[1]{\section*{##1}}  % two hashes, as command-in-command
+    \renewcommand\aftertoctitle{}  % instead of
+    % from https://tex.stackexchange.com/a/235589
+    %
+    % De-indent sections in ToC  ("cft" is 'contents, figures, tables')
+    \setlength{\cftsectionindent}{0em}
+    %
+    \pagestyle{plain}
+    % This removes CONTENTS in header from every page (hack; but is what it is).
 }
 
 % An image with a label overlaid ("A" e.g.).

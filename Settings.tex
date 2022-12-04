@@ -190,21 +190,6 @@
 \setbeforesecskip{5.0ex plus 1ex minus .2ex}
 \setbeforesubsecskip{4.5ex plus 1ex minus .2ex}
 
-% No indent of footnote text
-%   Most common stex answer: \usepackage[flushmargin]{footmisc}
-%   But not compatible with memoir.
-% Note that \sidefootnote is not relevant (those are at the bottom of the page).
-% Instead, rel section is memoir 12.1.2 Footnotes > Styling
-% Defaults in comment behind:
-\setlength{\footmarkwidth}{-2pt}  %{1.8em}
-%   How much the mark is indented (weird name for that)
-\setlength{\footmarksep}{0em}  % {-\footmarkwidth}
-%   How much subsequent lines are indented.
-\setlength{\footparindent}{\parindent}  %{1em}
-%   How much subsequent paragraphs are indented.
-
-% See https://tex.stackexchange.com/questions/167072/memoir-footnotes-in-margin-with-ragged2e
-% for hacking on \footnotesinmargin ("tex is chaos").
 
 % Memoir commands
 % Space for the margin notes
@@ -218,10 +203,12 @@
 % `spine' side is left margin of page.
 % `edge' or fore-edge is right margin.
 %
-\setulmargins{2.6cm}{*}{*}  % {upper}{lower}{ratio}
-% See table 2.6 in memman
-%
+% See table 2.6 in memman. % {upper}{lower}{ratio}
+% \setulmargins{2.6cm}{*}{*} % for when header
+\setulmargins{2.2cm}{*}{*}  % this is for pagestyle{plain}  (see \singlechapter in Commands)
 
+%
+% These are reused for sidecaption below.
 \newcommand*{\marginsep}{26pt}
 \newcommand*{\marginwidth}{0.28\paperwidth}
 \setmarginnotes{\marginsep}{\marginwidth}{4pt}
@@ -232,6 +219,22 @@
 %
 \footnotesinmargin
 %   Rewrites \footnote, \footnotext etc as \marginpar
+%
+% No indent of footnote text
+%   Most common stex answer: \usepackage[flushmargin]{footmisc}
+%   But not compatible with memoir.
+% Note that \sidefootnote is not relevant (those are at the bottom of the page).
+% Instead, rel section is memoir 12.1.2 Footnotes > Styling
+% Defaults in comment behind:
+\setlength{\footmarkwidth}{-2pt}  %{1.8em}
+%   How much the mark is indented (weird name for that)
+\setlength{\footmarksep}{0em}  % {-\footmarkwidth}
+%   How much subsequent lines are indented.
+\setlength{\footparindent}{\parindent}  %{1em}
+%   How much subsequent paragraphs are indented.
+%
+% See https://tex.stackexchange.com/questions/167072/memoir-footnotes-in-margin-with-ragged2e
+% for hacking on \footnotesinmargin ("tex is chaos").
 %
 % For an occasional footnote still at bottom, use \footnoteatfoot:
 \newcommand*{\lookdown}{\raisebox{.94ex}{\scalebox{0.65}{↓}}}
