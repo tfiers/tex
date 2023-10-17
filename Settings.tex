@@ -282,6 +282,40 @@
 \usepackage{xspace}
 
 
+% Tuto: https://www.overleaf.com/learn/latex/Code_listing
+% For even simpler, use `verbatim` env.
+% But listings (with `lstlisting' env and `\lstinputlisting' cmd) provides syntax highlighting etc.
+\usepackage{listings}
+%
+% To highlight certain lines:
+\usepackage{lstlinebgrd}  % The pkg to install for this is `lstaddons', https://ctan.org/pkg/lstaddons.
+% From https://tex.stackexchange.com/questions/8851/how-can-i-highlight-some-lines-from-source-code?answertab=modifieddesc#tab-top
+%
+% This package, lstlinebgrd, errors nowadays, and needs a manual patch:
+% https://tex.stackexchange.com/questions/451532/recent-issues-with-lstlinebgrd-package-with-listings-after-the-latters-updates#comment1281207_451538
+% For me, the file to patch is at `C:\TinyTeX\texmf-dist\tex\latex\lstaddons\lstlinebgrd.sty`
+%
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codebg}{rgb}{0.96,0.96,0.96}
+\lstdefinestyle{codestyle}{
+    backgroundcolor = \color{codebg},
+    commentstyle = \color{codegray},
+    keywordstyle = \color{magenta},
+    numberstyle = \tiny\color{codegray},
+    stringstyle = \color{codepurple},
+    basicstyle = \ttfamily\footnotesize,
+    % breaklines = true,
+    % breakatwhitespace = false,
+    showstringspaces = false,
+    captionpos = b,
+    numbers = left,
+    numbersep = 6pt,
+    frame = lines
+}
+\lstset{style=codestyle}
+
+
 % `biblatex' is fresher than `natbib'. "biber" is the program, biblatex is
 % the package.
 \usepackage[
